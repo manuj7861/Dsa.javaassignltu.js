@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+public class AnagramChecker {
+    public static boolean areAnagrams(String str1, String str2) {
+        // Remove spaces and punctuation and convert to lowercase
+        String s1 = str1.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        String s2 = str2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+        // Check if the lengths are equal
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        // Convert strings to character arrays and sort them
+        char[] arr1 = s1.toCharArray();
+        char[] arr2 = s2.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        // Compare the sorted character arrays
+        return Arrays.equals(arr1, arr2);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+        boolean result1 = areAnagrams(str1, str2);
+        System.out.println("Output 1: " + result1);
+
+        String str3 = "restful";
+        String str4 = "fluster";
+        boolean result2 = areAnagrams(str3, str4);
+        System.out.println("Output 2: " + result2);
+    }
+}
